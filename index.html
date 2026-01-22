@@ -4,265 +4,389 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Recycled Minerals & Aggregates | ReAl Aggregates</title>
-  <meta name="description" content="Recycled alumina-rich aggregate. Recycled Minerals & Aggregates (ReAl Aggregates)." />
+  <meta name="description" content="Recycled alumina-rich aggregate. Mineral processing, recycling, screening, and packaging services." />
+
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#0f1a2e;
-      --muted:#9fb0c7;
-      --text:#eaf0ff;
-      --line:rgba(255,255,255,.10);
-      --accent:#3a7d3a;     /* brand green */
-      --accent2:#7fbf67;    /* lighter green */
+      /* Your palette (edit these 4 if you want) */
+      --green-700:#1f5a37;
+      --green-500:#3a7d3a;
+      --green-300:#7fbf67;
+
+      --ink:#0b1220;
+      --muted:#526175;
+      --bg:#f6f7f9;
+      --card:#ffffff;
+      --line:rgba(10,20,32,.10);
+      --shadow: 0 18px 60px rgba(10,20,32,.12);
+      --radius:18px;
+      --max:1080px;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 450px at 15% 0%, rgba(127,191,103,.22), transparent 60%),
-        radial-gradient(900px 450px at 85% 15%, rgba(58,125,58,.22), transparent 55%),
-        linear-gradient(180deg, #070c16 0%, var(--bg) 100%);
+      color:var(--ink);
+      background:var(--bg);
     }
-    a{color:var(--text); text-decoration:none}
+    a{color:inherit; text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1040px; margin:0 auto; padding:40px 20px 70px}
-    .topbar{
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:rgba(246,247,249,.88);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
-      gap:16px; margin-bottom:26px;
+      padding:14px 0;
+      gap:14px;
     }
     .brand{
       display:flex; align-items:center; gap:12px; min-width:0;
     }
     .mark{
-      width:44px; height:44px; border-radius:12px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, var(--green-700), var(--green-300));
+      box-shadow: 0 10px 30px rgba(31,90,55,.18);
       flex:0 0 auto;
     }
-    .brand h1{
-      font-size:18px; line-height:1.2; margin:0; letter-spacing:.2px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    .brand .name{font-weight:800; letter-spacing:.2px; line-height:1.1}
+    .brand .tag{font-size:12px; color:var(--muted); margin-top:2px}
+    .brand-text{min-width:0}
+    .brand-text div{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+    .links{
+      display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:flex-end;
+      font-size:13px; color:var(--muted);
     }
-    .brand p{margin:2px 0 0; color:var(--muted); font-size:13px}
-    .pill{
-      padding:10px 12px; border:1px solid var(--line); border-radius:999px;
-      color:var(--muted); font-size:13px;
-      background: rgba(255,255,255,.03);
-      white-space:nowrap;
+    .links a{padding:8px 10px; border-radius:999px}
+    .links a:hover{background:rgba(10,20,32,.04); text-decoration:none}
+
+    .cta{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(58,125,58,.25);
+      background:rgba(127,191,103,.14);
+      color:var(--green-700);
+      font-weight:700;
+    }
+    .cta:hover{background:rgba(127,191,103,.20); text-decoration:none}
+
+    /* Hero */
+    .hero{
+      position:relative;
+      padding:54px 0 28px;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(900px 450px at 12% 15%, rgba(127,191,103,.22), transparent 60%),
+        radial-gradient(900px 450px at 85% 20%, rgba(31,90,55,.18), transparent 55%),
+        linear-gradient(180deg, #ffffff 0%, #f3f5f7 100%);
     }
 
-    .hero{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius:18px;
-      padding:28px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+    /* Optional hero photo overlay (drop a file named hero.jpg into repo root and uncomment)
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background: url("hero.jpg") center/cover no-repeat;
+      opacity:.14;
+      filter: grayscale(20%);
+      pointer-events:none;
     }
+    */
+
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.35fr .65fr;
-      gap:22px;
-      align-items:start;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+      position:relative;
     }
     .kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      font-size:12px; color:var(--muted);
-      letter-spacing:.12em; text-transform:uppercase;
-      margin-bottom:10px;
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--green-700);
+      font-weight:800;
     }
-    .dot{
+    .kdot{
       width:9px; height:9px; border-radius:50%;
-      background: var(--accent2);
-      box-shadow: 0 0 0 5px rgba(127,191,103,.16);
+      background:var(--green-500);
+      box-shadow:0 0 0 6px rgba(127,191,103,.18);
     }
-    .hero h2{
-      margin:0 0 10px;
-      font-size:34px;
-      line-height:1.12;
+    h1{
+      margin:12px 0 10px;
+      font-size:44px;
+      line-height:1.06;
       letter-spacing:-.02em;
     }
-    .hero .sub{
-      margin:0 0 18px;
-      color:var(--muted);
+    .sub{
+      margin:0 0 16px;
       font-size:16px;
-      line-height:1.6;
-      max-width:62ch;
+      line-height:1.65;
+      color:var(--muted);
+      max-width:70ch;
     }
-    .bullets{
-      display:grid; gap:10px; margin:16px 0 0; padding:0; list-style:none;
-    }
-    .bullets li{
-      display:flex; gap:10px; align-items:flex-start;
-      color:var(--text);
-    }
-    .check{
-      width:18px; height:18px; border-radius:6px; margin-top:2px;
-      background: rgba(127,191,103,.18);
-      border:1px solid rgba(127,191,103,.35);
-      display:grid; place-items:center;
-      flex:0 0 auto;
-    }
-    .check svg{width:12px; height:12px; fill:var(--accent2)}
-    .panel{
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:12px;
       border:1px solid var(--line);
-      background: rgba(15,26,46,.65);
-      border-radius:16px;
+      background:var(--card);
+      box-shadow: 0 10px 24px rgba(10,20,32,.08);
+      font-weight:700;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--green-700), var(--green-500));
+      color:#fff;
+      border-color: transparent;
+      box-shadow: 0 16px 40px rgba(31,90,55,.22);
+    }
+    .btn:hover{text-decoration:none; transform: translateY(-1px)}
+    .btn:active{transform: translateY(0px)}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
       padding:18px;
     }
-    .panel h3{
+    .card h3{
       margin:0 0 10px;
-      font-size:14px;
-      color:var(--muted);
-      letter-spacing:.08em;
+      font-size:13px;
+      letter-spacing:.12em;
       text-transform:uppercase;
-    }
-    .contact{
-      display:grid; gap:10px;
-      font-size:14px;
+      color:var(--muted);
     }
     .row{
-      display:flex; gap:10px; align-items:center;
-      padding:10px 10px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.06);
-      background: rgba(255,255,255,.02);
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(10,20,32,.07);
+      background:rgba(10,20,32,.02);
+      margin-bottom:10px;
     }
-    .ico{
-      width:34px; height:34px; border-radius:12px;
+    .icon{
+      width:36px; height:36px; border-radius:14px;
       display:grid; place-items:center;
-      background: rgba(127,191,103,.14);
-      border:1px solid rgba(127,191,103,.28);
+      background: rgba(127,191,103,.18);
+      border:1px solid rgba(58,125,58,.22);
       flex:0 0 auto;
     }
-    .ico svg{width:16px; height:16px; fill:var(--accent2)}
-    .row b{font-weight:600}
-    .muted{color:var(--muted)}
-    .footer{
-      margin-top:22px;
-      display:flex; flex-wrap:wrap; gap:10px;
-      justify-content:space-between;
+    .icon svg{width:16px; height:16px; fill:var(--green-700)}
+    .row .lbl{font-size:12px; color:var(--muted); margin:0 0 3px}
+    .row .val{font-weight:800; margin:0}
+
+    /* Sections */
+    section{padding:28px 0}
+    .section-title{
+      font-size:22px; margin:0 0 6px; letter-spacing:-.01em;
+    }
+    .section-sub{
+      margin:0 0 16px; color:var(--muted); line-height:1.6;
+      max-width:85ch;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .service{
+      padding:16px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow: 0 12px 36px rgba(10,20,32,.08);
+    }
+    .service b{display:block; margin:0 0 6px}
+    .service p{margin:0; color:var(--muted); line-height:1.6}
+
+    footer{
+      padding:22px 0 34px;
+      border-top:1px solid var(--line);
       color:var(--muted);
       font-size:12px;
+      background:#fff;
     }
-    .badge{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 10px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius:999px;
+    .foot{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
     }
 
-    @media (max-width: 860px){
+    @media (max-width: 900px){
       .hero-grid{grid-template-columns: 1fr}
-      .hero h2{font-size:28px}
+      h1{font-size:34px}
+      .links{display:none}
+    }
+    @media (max-width: 700px){
+      .grid-2{grid-template-columns: 1fr}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
-        <div style="min-width:0">
-          <h1>Recycled Minerals &amp; Aggregates</h1>
-          <p>ReAl Aggregates • Recycled alumina-rich aggregate</p>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="mark" aria-hidden="true"></div>
+          <div class="brand-text">
+            <div class="name">Recycled Minerals &amp; Aggregates</div>
+            <div class="tag">ReAl Aggregates • Recycled alumina-rich aggregate</div>
+          </div>
+        </div>
+
+        <div class="links" aria-label="Primary navigation">
+          <a href="#difference">Our Difference</a>
+          <a href="#services">Services</a>
+          <a href="#company">Company</a>
+          <a href="#contact">Contact</a>
+          <a class="cta" href="mailto:john.waters@rma-usa.com">Email</a>
         </div>
       </div>
-      <div class="pill">York, PA • Serving U.S. customers</div>
     </div>
+  </div>
 
-    <section class="hero">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
       <div class="hero-grid">
         <div>
-          <div class="kicker"><span class="dot"></span> Recycled alumina-rich aggregate</div>
-          <h2>High-performance recycled aggregate for industrial and infrastructure applications.</h2>
+          <div class="kicker"><span class="kdot"></span> Mineral processing &amp; recycling</div>
+          <h1>Recycled alumina-rich aggregate for demanding applications.</h1>
           <p class="sub">
-            ReAl Aggregates produces recycled alumina-rich aggregate with a focus on consistent sizing,
-            clean handling, and reliable supply for demanding end uses.
+            We process and supply recycled alumina-rich aggregate with controlled sizing, clean handling,
+            and reliable packaging—supporting industrial and infrastructure customers.
           </p>
 
-          <ul class="bullets">
-            <li>
-              <span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M20.3 6.7a1 1 0 0 1 0 1.4l-9.2 9.2a1 1 0 0 1-1.4 0L3.7 11.3a1 1 0 1 1 1.4-1.4l4 4 8.5-8.5a1 1 0 0 1 1.4 0Z"/></svg>
-              </span>
-              <span><b>Alumina-rich recycled material</b> engineered for repeatable performance.</span>
-            </li>
-            <li>
-              <span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M20.3 6.7a1 1 0 0 1 0 1.4l-9.2 9.2a1 1 0 0 1-1.4 0L3.7 11.3a1 1 0 1 1 1.4-1.4l4 4 8.5-8.5a1 1 0 0 1 1.4 0Z"/></svg>
-              </span>
-              <span><b>Controlled sizing &amp; screening</b> to match application requirements.</span>
-            </li>
-            <li>
-              <span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M20.3 6.7a1 1 0 0 1 0 1.4l-9.2 9.2a1 1 0 0 1-1.4 0L3.7 11.3a1 1 0 1 1 1.4-1.4l4 4 8.5-8.5a1 1 0 0 1 1.4 0Z"/></svg>
-              </span>
-              <span><b>Clean packaging &amp; logistics</b> (bulk / supersacks) for jobsite delivery.</span>
-            </li>
-          </ul>
+          <div class="btnrow">
+            <a class="btn primary" href="#contact">Get in touch</a>
+            <a class="btn" href="#services">View services</a>
+          </div>
         </div>
 
-        <aside class="panel">
+        <aside class="card" id="contact">
           <h3>Contact</h3>
-          <div class="contact">
-            <div class="row">
-              <div class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 3 3.7 5.2 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.36 2.3.56 3.6.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.1 21 3 13.9 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.56 3.6a1 1 0 0 1-.24 1l-2.27 2.2Z"/></svg>
-              </div>
-              <div>
-                <div class="muted">Phone</div>
-                <div><b><a href="tel:+14699996507">469-999-6507</a></b></div>
-              </div>
-            </div>
 
-            <div class="row">
-              <div class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v.2l10 6.2 10-6.2V6a2 2 0 0 0-2-2Zm2 5.1-9.5 5.9a1 1 0 0 1-1 0L2 9.1V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9.1Z"/></svg>
-              </div>
-              <div>
-                <div class="muted">Email</div>
-                <div><b><a href="mailto:john.waters@rma-usa.com">john.waters@rma-usa.com</a></b></div>
-              </div>
+          <div class="row">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 3 3.7 5.2 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.36 2.3.56 3.6.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.1 21 3 13.9 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.56 3.6a1 1 0 0 1-.24 1l-2.27 2.2Z"/></svg>
             </div>
-
-            <div class="row">
-              <div class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.9 9h-3.2a15.6 15.6 0 0 0-1.2-5 8 8 0 0 1 4.4 5ZM12 4c1 1.4 1.9 3.6 2.4 7H9.6C10.1 7.6 11 5.4 12 4Zm-3.5 2a15.6 15.6 0 0 0-1.2 5H4.1a8 8 0 0 1 4.4-5ZM4.1 13h3.2a15.6 15.6 0 0 0 1.2 5 8 8 0 0 1-4.4-5ZM12 20c-1-1.4-1.9-3.6-2.4-7h4.8c-.5 3.4-1.4 5.6-2.4 7Zm3.5-2a15.6 15.6 0 0 0 1.2-5h3.2a8 8 0 0 1-4.4 5Z"/></svg>
-              </div>
-              <div>
-                <div class="muted">Website</div>
-                <div><b><a href="https://www.realaggregates.com">www.realaggregates.com</a></b></div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-7 7c0 5.2 7 11 7 11s7-5.8 7-11a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 10 2.5 2.5 0 0 1 12 12.5Z"/></svg>
-              </div>
-              <div>
-                <div class="muted">Owner</div>
-                <div><b>John Waters</b></div>
-              </div>
+            <div>
+              <p class="lbl">Phone</p>
+              <p class="val"><a href="tel:+14699996507">469-999-6507</a></p>
             </div>
           </div>
 
-          <div class="footer">
-            <span class="badge">Recycled • Alumina-rich</span>
-            <span class="badge">Bulk • Supersacks</span>
+          <div class="row">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v.2l10 6.2 10-6.2V6a2 2 0 0 0-2-2Zm2 5.1-9.5 5.9a1 1 0 0 1-1 0L2 9.1V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9.1Z"/></svg>
+            </div>
+            <div>
+              <p class="lbl">Email</p>
+              <p class="val"><a href="mailto:john.waters@rma-usa.com">john.waters@rma-usa.com</a></p>
+            </div>
+          </div>
+
+          <div class="row" style="margin-bottom:0;">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.9 9h-3.2a15.6 15.6 0 0 0-1.2-5 8 8 0 0 1 4.4 5ZM12 4c1 1.4 1.9 3.6 2.4 7H9.6C10.1 7.6 11 5.4 12 4Zm-3.5 2a15.6 15.6 0 0 0-1.2 5H4.1a8 8 0 0 1 4.4-5ZM4.1 13h3.2a15.6 15.6 0 0 0 1.2 5 8 8 0 0 1-4.4-5ZM12 20c-1-1.4-1.9-3.6-2.4-7h4.8c-.5 3.4-1.4 5.6-2.4 7Zm3.5-2a15.6 15.6 0 0 0 1.2-5h3.2a8 8 0 0 1-4.4 5Z"/></svg>
+            </div>
+            <div>
+              <p class="lbl">Website</p>
+              <p class="val"><a href="https://www.realaggregates.com">www.realaggregates.com</a></p>
+            </div>
           </div>
         </aside>
       </div>
-    </section>
-
-    <div class="footer" style="margin-top:18px;">
-      <span>© <span id="y"></span> Recycled Minerals &amp; Aggregates</span>
-      <span class="muted">www.realaggregates.com</span>
     </div>
-  </div>
+  </header>
+
+  <!-- OUR DIFFERENCE -->
+  <section id="difference">
+    <div class="wrap">
+      <h2 class="section-title">Our Difference</h2>
+      <p class="section-sub">
+        We focus on consistent processing, controlled sizing, and clean packaging—helping customers reduce waste,
+        stabilize supply, and reduce cost with recycled alumina-rich aggregate.
+      </p>
+
+      <div class="grid-2">
+        <div class="service">
+          <b>Consistent processing</b>
+          <p>Sorting, crushing, screening, and blending to produce marketable, repeatable products.</p>
+        </div>
+        <div class="service">
+          <b>Packaging &amp; logistics</b>
+          <p>Bulk or supersacks with clear identification and jobsite-ready handling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <h2 class="section-title">Services</h2>
+      <p class="section-sub">
+        One-page overview of what we do. If you want, we can later split these into separate pages—no forms required.
+      </p>
+
+      <div class="grid-2">
+        <div class="service">
+          <b>Mineral Processing</b>
+          <p>Crushing, sizing, screening, and grading to meet application requirements.</p>
+        </div>
+        <div class="service">
+          <b>Mineral Recycling</b>
+          <p>Transforming industrial by-products into reusable aggregate products.</p>
+        </div>
+        <div class="service">
+          <b>Packaging Services</b>
+          <p>Selectively package in different container types/weights for customer workflows.</p>
+        </div>
+        <div class="service">
+          <b>Toll Blending</b>
+          <p>Blend different sizes/products to achieve target gradations and performance needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY -->
+  <section id="company">
+    <div class="wrap">
+      <h2 class="section-title">Company</h2>
+      <p class="section-sub">
+        Recycled Minerals &amp; Aggregates (ReAl Aggregates) supplies recycled alumina-rich aggregate to industrial and
+        infrastructure markets. We prioritize practical execution: clean processing, clear specs, and reliable delivery.
+      </p>
+
+      <div class="service">
+        <b>Owner</b>
+        <p>John Waters • <a href="mailto:john.waters@rma-usa.com">john.waters@rma-usa.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>© <span id="y"></span> Recycled Minerals &amp; Aggregates</div>
+        <div><a href="https://www.realaggregates.com">www.realaggregates.com</a></div>
+      </div>
+    </div>
+  </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
