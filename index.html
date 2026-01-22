@@ -8,9 +8,11 @@
 
   <style>
     :root{
+      /* Brand (edit if desired) */
       --accent:#1f5a37;      /* deep green */
       --accent2:#3a7d3a;     /* secondary green */
 
+      /* Neutral system */
       --bg:#ffffff;
       --ink:#0b1220;
       --muted:#5b6675;
@@ -48,12 +50,17 @@
     .brand{
       display:flex; align-items:center; gap:12px; min-width:0;
     }
-    .logo-img{
-      height:34px;
-      width:auto;
-      display:block;
+    .mark{
+      width:14px; height:14px;
+      background:var(--accent);
+      border-radius:4px;
+      box-shadow: 0 0 0 5px rgba(31,90,55,.12);
+      flex:0 0 auto;
     }
-
+    .brand-title{
+      font-weight:800; letter-spacing:.2px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
     .navlinks{
       display:flex; align-items:center; gap:18px; flex-wrap:wrap;
       font-size:13px; color:var(--muted);
@@ -199,11 +206,10 @@
   <header>
     <div class="wrap">
       <div class="nav">
-        <!-- LOGO: upload your file as "logo.png" to repo root -->
         <div class="brand">
-          <img class="logo-img" src="logo.png" alt="Recycled Minerals & Aggregates">
+          <div class="mark" aria-hidden="true"></div>
+          <div class="brand-title">Recycled Minerals &amp; Aggregates</div>
         </div>
-
         <nav class="navlinks" aria-label="Primary">
           <a href="#focus">Focus</a>
           <a href="#services">Services</a>
@@ -304,10 +310,10 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Next step</h2>
-          <p class="sub">Request pricing / availability.</p>
+          <p class="sub">If you tell me your top 2 products, I’ll tailor the copy.</p>
         </div>
         <div class="tile">
-          <b>Contact</b>
+          <b>Request pricing / availability</b>
           <p>
             Email <a href="mailto:john.waters@rma-usa.com">john.waters@rma-usa.com</a> or call
             <a href="tel:+14699996507">469-999-6507</a>.
@@ -331,3 +337,4 @@
   </script>
 </body>
 </html>
+
