@@ -2,16 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ReAl Aggregates | Recycled Minerals & Aggregates</title>
-</head>
-<body style="font-family: Arial, sans-serif; padding: 40px;">
-  <h1 style="margin: 0 0 10px;">Recycled Minerals &amp; Aggregates</h1>
-  <p style="margin: 0 0 20px; font-size: 18px;">Recycled alumina-rich aggregate.</p>
-
-  <p style="margin: 0 0 8px;"><strong>John Waters</strong> — Owner</p>
-  <p style="margin: 0 0 8px;">469-999-6507</p>
-  <p style="margin: 0 0 8px;">john.waters@rma-usa.com</p>
-  <p style="margin: 0 0 8px;"><a href="https://www.realaggregates.com">www.realaggregates.com</a></p>
-</body>
-</html>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recycled Minerals & Aggregates | ReAl Aggregates</title>
+  <meta name="description" content="Recycled alumina-rich aggregate. Recycled Minerals & Aggregates (ReAl Aggregates)." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2e;
+      --muted:#9fb0c7;
+      --text:#eaf0ff;
+      --line:rgba(255,255,255,.10);
+      --accent:#3a7d3a;     /* brand green */
+      --accent2:#7fbf67;    /* lighter green */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 450px at 15% 0%, rgba(127,191,103,.22), transparent 60%),
+        radial-gradient(900px 450px at 85% 15%, rgba(58,125,58,.22), transparent 55%),
+        linear-gradient(180deg, #070c16 0%, var(--bg) 100%);
+    }
+    a{color:var(--text); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1040px; margin:0 auto; padding:40px 20px 70px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; margin-bottom:26px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:0;
+    }
+    .mark{
+      width:44px; height:44px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      flex:0 0 auto;
+    }
+    .brand h1{
+      font-size:18px; line-height:1.2; margin:0; letter-spacing:.2px;
