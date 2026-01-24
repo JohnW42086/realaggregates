@@ -8,12 +8,10 @@
 
   <style>
     :root{
-      /* Brand (edit if desired) */
-      --accent:#1f5a37;      /* deep green */
-      --accent2:#3a7d3a;     /* secondary green */
+      --accent:#1f5a37;
+      --accent2:#3a7d3a;
 
-      /* Neutral system */
-      --bg:#ffffff;
+      --bg:#fbfbfc;
       --ink:#0b1220;
       --muted:#5b6675;
       --line:rgba(12,20,34,.12);
@@ -21,6 +19,7 @@
 
       --max:1120px;
       --radius:18px;
+      --shadow: 0 10px 30px rgba(12,20,34,.08);
     }
 
     *{box-sizing:border-box}
@@ -38,54 +37,56 @@
     /* Header */
     header{
       position:sticky; top:0; z-index:40;
-      background:rgba(255,255,255,.9);
+      background:rgba(251,251,252,.92);
       backdrop-filter: blur(10px);
       border-bottom:1px solid var(--line);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      padding:16px 0;
+      padding:14px 0;
       gap:16px;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width:0;
-    }
-    .mark{
-      width:14px; height:14px;
-      background:var(--accent);
-      border-radius:4px;
-      box-shadow: 0 0 0 5px rgba(31,90,55,.12);
-      flex:0 0 auto;
-    }
-    .brand-title{
-      font-weight:800; letter-spacing:.2px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:0;}
     .navlinks{
-      display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
       font-size:13px; color:var(--muted);
     }
     .navlinks a{padding:8px 10px; border-radius:999px}
     .navlinks a:hover{background:rgba(12,20,34,.04); text-decoration:none}
 
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:750;
+      box-shadow: 0 6px 18px rgba(12,20,34,.06);
+    }
+    .btn.primary{
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+      box-shadow: 0 10px 22px rgba(31,90,55,.22);
+    }
+    .btn:hover{text-decoration:none}
+    .btn.primary:hover{filter:brightness(.98)}
+    .btn:active{transform: translateY(1px)}
+
     /* Hero */
     .hero{
-      padding:56px 0 34px;
+      padding:66px 0 42px;
       border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(1200px 600px at 15% 20%, rgba(31,90,55,.10), transparent 55%),
+        radial-gradient(900px 500px at 85% 10%, rgba(12,20,34,.06), transparent 55%);
     }
     .hero-grid{
       display:grid;
       grid-template-columns: 1.25fr .75fr;
       gap:24px;
       align-items:start;
-    }
-    .eyebrow{
-      font-size:12px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--accent);
-      font-weight:800;
-      margin:0 0 12px;
     }
     h1{
       margin:0 0 14px;
@@ -94,36 +95,60 @@
       letter-spacing:-.02em;
     }
     .lede{
-      margin:0 0 18px;
+      margin:0 0 10px;
       color:var(--muted);
       font-size:16px;
       line-height:1.75;
       max-width:70ch;
     }
-    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-weight:750;
-    }
-    .btn.primary{
-      background:var(--accent);
-      color:#fff;
-      border-color:var(--accent);
-    }
-    .btn:hover{text-decoration:none}
-    .btn.primary:hover{filter:brightness(.98)}
-    .btn:active{transform: translateY(1px)}
 
-    /* Right contact card */
-    .card{
+    .bullets{
+      display:grid;
+      gap:10px;
+      margin:16px 0 0;
+      padding:0;
+      list-style:none;
+    }
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color:var(--muted);
+      line-height:1.6;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:3px;
+      background:var(--accent);
+      margin-top:6px;
+      box-shadow:0 0 0 5px rgba(31,90,55,.12);
+      flex:0 0 auto;
+    }
+
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+
+    /* Texture strip */
+    .texture-strip{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:16px;
+      max-width:560px;
+    }
+    .swatch{
+      border-radius:14px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      height:74px;
+      background-size:cover;
+      background-position:center;
+      box-shadow: var(--shadow);
+    }
+
+    /* Cards */
+    .card,.tile{
       border:1px solid var(--line);
       border-radius:var(--radius);
       background:#fff;
       padding:18px;
+      box-shadow: var(--shadow);
     }
     .card h3{
       margin:0 0 10px;
@@ -170,12 +195,6 @@
       grid-template-columns: 1fr 1fr;
       gap:14px;
     }
-    .tile{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      padding:18px;
-    }
     .tile b{display:block; margin:0 0 6px}
     .tile p{margin:0; color:var(--muted); line-height:1.7}
 
@@ -185,19 +204,19 @@
       color:var(--muted);
       font-size:12px;
     }
-    .foot{
-      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
-    }
+    .foot{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;}
 
     @media (max-width: 900px){
       .hero-grid{grid-template-columns:1fr}
       h1{font-size:34px}
       .section-head{flex-direction:column; align-items:flex-start}
       .section-head .sub{text-align:left}
-      .navlinks{display:none}
+      .navlinks{display:flex; gap:8px}
+      .navlinks a{padding:8px 8px}
     }
     @media (max-width: 700px){
       .grid{grid-template-columns:1fr}
+      .texture-strip{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -207,11 +226,14 @@
     <div class="wrap">
       <div class="nav">
         <div class="brand">
-  <img src="rma_logo_clean_2000w_white.png" alt="Recycled Minerals & Aggregates" style="height:100px;width:auto;display:block;">
-</div>
+          <!-- CHANGE THIS FILE NAME IF NEEDED -->
+          <img src="rma_logo_clean_2000w_white.png"
+               alt="Recycled Minerals & Aggregates"
+               style="height:72px;width:auto;display:block;">
+        </div>
 
         <nav class="navlinks" aria-label="Primary">
-          <a href="#focus">Focus</a>
+          <a href="#products">Products</a>
           <a href="#services">Services</a>
           <a href="#contact">Contact</a>
           <a class="btn primary" href="mailto:john.waters@rma-usa.com" style="padding:10px 12px; border-radius:999px;">Email</a>
@@ -226,13 +248,26 @@
         <div class="hero-grid">
           <div>
             <h1>Recycled alumina-rich aggregate.</h1>
+
             <p class="lede">
-              We process and supply recycled alumina-rich aggregate with controlled sizing and clean packaging for
-              industrial and infrastructure customers.
+              Recycled alumina-rich aggregate for high-friction surfacing, refractory applications, and circular supply chains.
             </p>
+
+            <ul class="bullets">
+              <li><span class="dot"></span><span><b>Friction market:</b> angular aggregate for HFST and traction applications.</span></li>
+              <li><span class="dot"></span><span><b>Refractory market:</b> alumina-rich fractions for industrial use and blends.</span></li>
+              <li><span class="dot"></span><span><b>Recycling:</b> consistent processing, grading, and lot traceability.</span></li>
+            </ul>
+
+            <!-- CHANGE THESE TWO FILE NAMES IF NEEDED -->
+            <div class="texture-strip" aria-label="Material textures">
+              <div class="swatch" style="background-image:url('FST.png')"></div>
+              <div class="swatch" style="background-image:url('Concrete.png')"></div>
+            </div>
+
             <div class="cta-row">
               <a class="btn primary" href="#contact">Get in touch</a>
-              <a class="btn" href="#services">See services</a>
+              <a class="btn" href="#products">See products</a>
             </div>
           </div>
 
@@ -248,27 +283,43 @@
             </div>
             <div class="item">
               <p class="k">Email</p>
-              <p class="v"><a href="mailto:john.waters@rma-usa.com">john.waters@rma-usa.com</a></p>
+              <p class="v"><a href="mailto:john.waters@rma-usa.com?subject=RMA%20-%20Pricing%20%2F%20Availability%20Request">john.waters@rma-usa.com</a></p>
             </div>
+            <div class="item">
+              <p class="k">Typical response</p>
+              <p class="v">Same day</p>
+            </div>
+            <a class="btn primary" style="width:100%; margin-top:12px;"
+               href="mailto:john.waters@rma-usa.com?subject=RMA%20-%20Request%20a%20Quote&body=Product%3A%0AQuantity%3A%0ADelivery%20location%3A%0ATarget%20size%20range%3A%0A">
+              Request a quote
+            </a>
           </aside>
         </div>
       </div>
     </div>
 
-    <section id="focus">
+    <section id="products">
       <div class="wrap">
         <div class="section-head">
-          <h2>Focus</h2>
-          <p class="sub">Clean processing. Clear specs. Reliable delivery.</p>
+          <h2>Products</h2>
+          <p class="sub">Defined sizes, clean packaging, consistent lots.</p>
         </div>
         <div class="grid">
           <div class="tile">
-            <b>Recycled alumina-rich feedstocks</b>
-            <p>We convert industrial by-products into usable aggregate products for demanding end uses.</p>
+            <b>HFST Aggregate</b>
+            <p>Angular, high-friction aggregate. Supersacks available. Typical sizing: 1.5–3.35 mm (custom cuts available).</p>
           </div>
           <div class="tile">
-            <b>Controlled sizing</b>
-            <p>Crushing, screening, and grading to match application requirements and customer workflows.</p>
+            <b>Refractory Aggregate</b>
+            <p>Alumina-rich fractions for industrial applications. Coarse and mid fractions available.</p>
+          </div>
+          <div class="tile">
+            <b>Fines / Fillers</b>
+            <p>Fine fractions for blends and secondary uses. Screen cuts available by mesh.</p>
+          </div>
+          <div class="tile">
+            <b>Custom Blends</b>
+            <p>Toll blending to hit target gradations and performance requirements.</p>
           </div>
         </div>
       </div>
@@ -305,7 +356,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Next step</h2>
-          <p class="sub"></p>
+          <p class="sub">Fast quote requests and clear sizing targets.</p>
         </div>
         <div class="tile">
           <b>Request pricing / availability</b>
@@ -332,4 +383,3 @@
   </script>
 </body>
 </html>
-
